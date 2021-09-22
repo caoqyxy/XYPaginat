@@ -3,7 +3,8 @@
 一个简单的Swift版分页组件
 
 1、初始化组件
-let thisView = XYPaginationView(frame: self.view.frame)
+
+        let thisView = XYPaginationView(frame: self.view.frame)
         view.addSubview(thisView)
         
         //设置
