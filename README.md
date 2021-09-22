@@ -34,4 +34,4 @@ let thisView = XYPaginationView(frame: self.view.frame)
 
 3、Swift Package
 
-https://github.com/caoqyxy/XYPaginat/git
+https://github.com/caoqyxy/XYPaginat.git
