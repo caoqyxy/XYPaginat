@@ -10,8 +10,8 @@ import UIKit
 
 public class XYPaginationView: UIView {
     
-   public var titleView:XYTitleView = XYTitleView()
-   public var pageView:XYPageView = XYPageView()
+   public lazy var titleView:XYTitleView = XYTitleView()
+   public lazy var pageView:XYPageView = XYPageView()
    public  var myConfiger:Configer = Configer.init( DefaultPageIndex: 0)
   public weak var delegate:SetPageViewCellDelegate!
     
@@ -23,6 +23,8 @@ public class XYPaginationView: UIView {
     
    public override init(frame: CGRect) {
         super.init(frame: frame)
+        self.addSubview(titleView)
+        self.addSubview(pageView)
     }
     
     required init?(coder: NSCoder) {
@@ -31,18 +33,11 @@ public class XYPaginationView: UIView {
     
   public func CreatView() {
         myConfiger.NowSelectIndex = myConfiger.DefaultPageIndex
-        //titleView = XYTitleView(frame: CGRect(x: 0, y: 200, width: self.frame.width, height: 50))
         titleView.delegate = self
         titleView.CreatTitleView(config: myConfiger)
-        self.addSubview(titleView)
-        
-        
-        //pageView = XYPageView(frame: CGRect(x: 0, y: 250, width: self.frame.width, height: 300))
+    
         pageView.delegate = self
         pageView.CreatPageView(config: myConfiger )
-        self.addSubview(pageView)
-        
-        
     }
 }
 

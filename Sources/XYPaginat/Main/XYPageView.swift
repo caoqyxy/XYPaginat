@@ -27,6 +27,7 @@ public class XYPageView: UIView {
     func CreatPageView(config: Configer) {
         if(config.Titles.count>0){
             thisConfiger = config
+            self.layoutIfNeeded()
             pageScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
             pageScrollView.showsHorizontalScrollIndicator = false
             pageScrollView.bounces = false
@@ -40,7 +41,7 @@ public class XYPageView: UIView {
             
             for i in 0..<config.Titles.count{
                 let uiv = UIView(frame: CGRect(x: CGFloat(i) * self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
-                uiv.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
+                uiv.backgroundColor = UIColor.white
                 pageScrollView.addSubview(uiv)
                 AllPages.append(uiv)
                 PageInitBools.append(false)
