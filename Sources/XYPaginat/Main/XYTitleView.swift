@@ -30,6 +30,7 @@ public class XYTitleView: UIView {
        
         if(config.Titles.count>0){
             thisConfiger = config
+            self.layoutIfNeeded()
             titleScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
             titleScrollView.showsHorizontalScrollIndicator = false
             titleScrollView.bounces = false
@@ -72,11 +73,11 @@ public class XYTitleView: UIView {
         var MidPos = CGFloat(index) * (thisConfiger.SpaceWidth + thisConfiger.TitleWidth) + thisConfiger.TitleWidth/2 - titleScrollView.frame.width/2
         if(MidPos < 0 ){
             MidPos = 0
+        }else{
+            if(MidPos > AllWidth){
+                MidPos = AllWidth
+            }
         }
-        if(MidPos > AllWidth){
-            MidPos = AllWidth
-        }
-        print(index)
         titleScrollView.contentOffset = CGPoint( x: MidPos , y: 0)
         LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
     }
@@ -87,10 +88,12 @@ public class XYTitleView: UIView {
         var MidPos = CGFloat(index) * (thisConfiger.SpaceWidth + thisConfiger.TitleWidth) + thisConfiger.TitleWidth/2 - titleScrollView.frame.width/2
         if(MidPos < 0 ){
             MidPos = 0
+        }else{
+            if(MidPos > AllWidth){
+                MidPos = AllWidth
+            }
         }
-        if(MidPos > AllWidth){
-            MidPos = AllWidth
-        }
+        
         UIView.animate(withDuration: 0.3) { [self] in
             titleScrollView.contentOffset = CGPoint( x: MidPos , y: 0)
             LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
