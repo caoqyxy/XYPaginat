@@ -22,10 +22,16 @@
         thisView.titleView.frame = CGRect(x: 0, y: 200, width: thisView.frame.width, height: 50)
         thisView.pageView.frame = CGRect(x: 0, y: 250, width: thisView.frame.width, height: 300)
         
+        
+2、创建视图
+   
+        override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         //初始化创建方法
         thisView.CreatView()
+        } 
         
-2、设置创建子页的代理
+3、设置创建子页的代理
 
        extension ViewController:SetPageViewCellDelegate
        {
@@ -33,6 +39,6 @@
           }
        }
 
-3、Swift Package
+4、Swift Package
 
 https://github.com/caoqyxy/XYPaginat.git
