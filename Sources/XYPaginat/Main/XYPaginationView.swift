@@ -51,6 +51,12 @@ public class XYPaginationView: UIView {
 }
 
 extension XYPaginationView :TitleViewDelegate,PageViewDelegate{
+    func MoveLine(LineSize: CGFloat, PageValue: CGFloat) {
+        titleView.SetLinePos(Lvalue: PageValue)
+        titleView.SetLineSize(Lsize: LineSize)
+    }
+    
+    
     func SetView(index: Int, childView: UIView) {
         delegate.SetPageView(index: index, childView: childView)
     }

@@ -15,6 +15,10 @@ public class XYTitleView: UIView {
     var titleScrollView:UIScrollView!
     var LineView:UIView = UIView()
     
+    var LineSpace:CGFloat = 0
+    var LineWidth:CGFloat = 0
+    var LineModulus:CGFloat = 0
+    
     weak var delegate:TitleViewDelegate!
     
 //    override init(frame: CGRect) {
@@ -39,6 +43,9 @@ public class XYTitleView: UIView {
             let AllWidth = count * config.TitleWidth + (count - 1) * config.SpaceWidth
             self.addSubview(titleScrollView)
             titleScrollView.contentSize = CGSize(width: AllWidth, height: titleScrollView.frame.height)
+            
+            LineSpace = config.SpaceWidth + config.TitleWidth
+            
             for i in 0..<config.Titles.count{
                 let posX = CGFloat(i) * (config.SpaceWidth + config.TitleWidth)
                 let posY = CGFloat(0)
@@ -54,6 +61,8 @@ public class XYTitleView: UIView {
                 cellBtn.addTarget(self, action: #selector(TapTitleBtnCell(button:)), for: .touchUpInside)
                 AllBtns.append(cellBtn)
             }
+            LineWidth = config.LineSize.width
+            LineModulus = config.LineModulus
             LineView.frame.size = CGSize( width: config.LineSize.width, height: config.LineSize.height)
             DefualtTitleAutoMid(index: config.DefaultPageIndex)
             SetState(index: config.DefaultPageIndex)
@@ -80,6 +89,15 @@ public class XYTitleView: UIView {
         LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
     }
     
+    func SetLinePos(Lvalue : CGFloat){
+        LineView.center = CGPoint(x: AllBtns[0].center.x + thisConfiger.LineOffset.x + LineSpace * Lvalue, y: AllBtns[0].center.y + thisConfiger.LineOffset.y)
+    }
+    
+    func SetLineSize(Lsize : CGFloat){
+        LineView.frame.size.width = LineWidth + LineModulus * ( LineSpace - LineWidth ) * Lsize
+    }
+    
+    
     func SetTitleAutoMid(index:Int) {
         
         let AllWidth = titleScrollView.contentSize.width - titleScrollView.frame.width
@@ -91,18 +109,16 @@ public class XYTitleView: UIView {
                 MidPos = AllWidth
             }
         }
-        
         UIView.animate(withDuration: 0.3) { [self] in
             titleScrollView.contentOffset = CGPoint( x: MidPos , y: 0)
-            LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
       }
    }
     
-    func LineAnim(index:Int){
-        UIView.animate(withDuration: 0.3) { [self] in
-            LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
-      }
-    }
+//    func LineAnim(index:Int){
+//        UIView.animate(withDuration: 0.3) { [self] in
+//            LineView.center = CGPoint(x: AllBtns[index].center.x + thisConfiger.LineOffset.x, y: AllBtns[index].center.y + thisConfiger.LineOffset.y)
+//      }
+//    }
     
     func SetState(index:Int) {
         for i in 0..<AllBtns.count{
@@ -119,7 +135,7 @@ public class XYTitleView: UIView {
     
     @objc func TapTitleBtnCell(button : UIButton){
         delegate.ClickTitleBtn(button: button)
-        LineAnim(index: button.tag)
+        //LineAnim(index: button.tag)
     }
 }
 

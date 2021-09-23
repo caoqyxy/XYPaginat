@@ -75,15 +75,20 @@ public class XYPageView: UIView {
 
 extension XYPageView:UIScrollViewDelegate{
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let page = round((scrollView.contentOffset.x)/scrollView.frame.size.width)
+        let pageValue = (scrollView.contentOffset.x)/scrollView.frame.size.width
+        let page = round(pageValue)
         delegate.MovePage(pageIndex: Int(page))
         InitView(index: Int(page))
+        let bfb = (scrollView.contentOffset.x).truncatingRemainder(dividingBy: scrollView.frame.size.width)/(scrollView.frame.size.width)
+        let kuangSize = 1 - abs(0.5 - bfb) / 0.5
+        delegate.MoveLine(LineSize: kuangSize,PageValue: pageValue)
         }
 }
 
 protocol PageViewDelegate:NSObjectProtocol {
     func MovePage(pageIndex:Int)
     func SetView(index: Int, childView:UIView)
+    func MoveLine(LineSize:CGFloat,PageValue:CGFloat)
 }
 
 extension UIColor {

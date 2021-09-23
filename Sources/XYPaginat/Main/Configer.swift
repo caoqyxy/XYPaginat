@@ -44,6 +44,8 @@ public struct Configer {
     /** Line圆角*/
     public var LineRadius :CGFloat = 3
     
+    public var LineModulus: CGFloat = 0.8
+    
     
     
     /** 字体大小是否变化 */
