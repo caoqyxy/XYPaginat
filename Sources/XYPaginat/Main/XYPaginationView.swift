@@ -10,8 +10,8 @@ import UIKit
 
 public class XYPaginationView: UIView {
     
-   public lazy var titleView:XYTitleView = XYTitleView()
-   public lazy var pageView:XYPageView = XYPageView()
+   public  var titleView:XYTitleView = XYTitleView()
+   public  var pageView:XYPageView = XYPageView()
    public  var myConfiger:Configer = Configer.init( DefaultPageIndex: 0)
    public weak var delegate:SetPageViewCellDelegate!
     var isInit = false
