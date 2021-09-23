@@ -53,8 +53,6 @@ public class XYTitleView: UIView {
                 cellBtn.tag = i
                 cellBtn.addTarget(self, action: #selector(TapTitleBtnCell(button:)), for: .touchUpInside)
                 AllBtns.append(cellBtn)
-                SetState(index: 0)
-                
             }
             LineView.frame.size = CGSize( width: config.LineSize.width, height: config.LineSize.height)
             DefualtTitleAutoMid(index: config.DefaultPageIndex)

@@ -13,7 +13,8 @@ public class XYPaginationView: UIView {
    public lazy var titleView:XYTitleView = XYTitleView()
    public lazy var pageView:XYPageView = XYPageView()
    public  var myConfiger:Configer = Configer.init( DefaultPageIndex: 0)
-  public weak var delegate:SetPageViewCellDelegate!
+   public weak var delegate:SetPageViewCellDelegate!
+    var isInit = false
     
 //    /** 所有ChildView */
 //    public var ChildView:[UIView] = []
@@ -32,6 +33,10 @@ public class XYPaginationView: UIView {
     }
     
   public func CreatView() {
+      if isInit {
+          return
+      }
+      isInit = true
         myConfiger.NowSelectIndex = myConfiger.DefaultPageIndex
         titleView.delegate = self
         titleView.CreatTitleView(config: myConfiger)
