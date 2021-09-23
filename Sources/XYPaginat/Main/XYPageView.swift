@@ -16,13 +16,13 @@ public class XYPageView: UIView {
     weak var delegate:PageViewDelegate!
     var PageInitBools:[Bool] = []
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+//    override init(frame: CGRect) {
+//        super.init(frame: frame)
+//    }
+//    
+//    required init?(coder: NSCoder) {
+//        fatalError("init(coder:) has not been implemented")
+//    }
     
     func CreatPageView(config: Configer) {
         if(config.Titles.count>0){
