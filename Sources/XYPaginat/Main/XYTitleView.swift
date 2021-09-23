@@ -106,6 +106,7 @@ public class XYTitleView: UIView {
     
     func SetState(index:Int) {
         for i in 0..<AllBtns.count{
+            
             if i == index{
                 AllBtns[i].titleLabel!.font = thisConfiger.TitleSelectedFont
                 AllBtns[i].setTitleColor(thisConfiger?.TitleSelectedColor, for: .normal)

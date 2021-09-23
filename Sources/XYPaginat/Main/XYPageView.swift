@@ -29,6 +29,7 @@ public class XYPageView: UIView {
             thisConfiger = config
             self.layoutIfNeeded()
             pageScrollView = UIScrollView(frame: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
+            
             pageScrollView.showsHorizontalScrollIndicator = false
             pageScrollView.bounces = false
             pageScrollView.isDirectionalLockEnabled = true
@@ -37,8 +38,9 @@ public class XYPageView: UIView {
             let count = CGFloat(config.Titles.count)
             let AllWidth = count * self.frame.width
             self.addSubview(pageScrollView)
-            pageScrollView.contentSize = CGSize(width: AllWidth, height: pageScrollView.frame.height)
+
             
+            pageScrollView.contentSize = CGSize(width: AllWidth, height: pageScrollView.frame.height)
             for i in 0..<config.Titles.count{
                 let uiv = UIView(frame: CGRect(x: CGFloat(i) * self.frame.width, y: 0, width: self.frame.width, height: self.frame.height))
                 uiv.backgroundColor = UIColor.white
